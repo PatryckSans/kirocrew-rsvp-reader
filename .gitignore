@@ -1,0 +1,7 @@
+__pycache__/
+.pytest_cache/
+node_modules/
+tests/ui-integration/data/
+tests/ui-integration/serve.log
+.app_secret
+installed.json

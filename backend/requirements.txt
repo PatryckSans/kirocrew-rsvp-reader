@@ -1,0 +1,6 @@
+# No third-party dependencies to install.
+#
+# The backend runs inside the Python that the KiroCrew gateway uses for app
+# backends, which already ships aiohttp and `kiro_crew.apps.proxy_auth` (used to
+# verify the gateway's request signature -- see the top of server.py).
+# Tests only need pytest (see README, "Development").

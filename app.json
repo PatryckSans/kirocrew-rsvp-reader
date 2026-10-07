@@ -1,0 +1,94 @@
+{
+  "name": "rsvp-reader",
+  "version": "0.2.0",
+  "displayName": "RSVP Reader",
+  "description": "Read an agent's replies at your own pace, one word at a time. RSVP Reader flashes each word at a fixed focal point, cleans the Markdown noise (tables, code, links, paths), and keeps your place, so a long answer becomes a steady stream you follow without scrolling.",
+  "author": "Patryck Sans",
+  "license": "Apache-2.0",
+  "iconPath": "assets/icon.svg",
+  "tags": [
+    "reading",
+    "rsvp",
+    "productivity",
+    "accessibility",
+    "sessions"
+  ],
+  "highlights": [
+    "One word at a time at a fixed focal point, with the key letter highlighted so your eyes stay still",
+    "Opens where you already are: a quick-read popover in the composer, a side-panel tab bound to the current chat, or a full page",
+    "Reads the closing reply of each turn by default, with every message one click away; a banner tells you when a new reply arrives",
+    "Markdown cleaned for reading: lists, tables, code, links, paths and IDs become short readable units, and Clean/Raw shows the original",
+    "Smart pacing: pauses on punctuation, list items, numbers and long words; a slow start and a few words of rewind when you resume; your place is remembered per message, with time left",
+    "A Context box that keeps the chat's paragraphs, lists and tables, highlights the current list item and jumps on click; full keyboard control (press ? for the list)"
+  ],
+  "useCases": [
+    "Get through a long report, plan or review at 400+ WPM without scrolling the chat.",
+    "Keep the reader beside the conversation: the side panel follows the chat and offers each new reply as it arrives.",
+    "Work through a list-heavy or table-heavy answer: items are numbered, titled and highlighted so you always know which one you are on.",
+    "Read any text you paste (notes, emails, documents) with the same pacing and cleanup."
+  ],
+  "configuration": [
+    "Nothing to set up: enable the app, then use the ⚡ chip in the composer, the + menu of the side panel, or the RSVP Reader page in the sidebar.",
+    "It reads your sessions from ~/.kiro/crew/sessions (read-only). Speed, settings and reading positions are kept in this browser's storage; the app makes no network requests.",
+    "Tune it in ⚙ Settings: presets (Minimal, Balanced, Detailed), per-category rules and pauses, and the reading display (font, spacing, focal letter).",
+    "After an update, hard-refresh the dashboard (Ctrl+Shift+R) so the browser loads the new UI files."
+  ],
+  "ui": {
+    "entry": "index.mjs",
+    "pages": [
+      {
+        "route": "/apps/rsvp-reader",
+        "label": "RSVP Reader",
+        "icon": "Search"
+      }
+    ],
+    "sidebar": {
+      "section": "Apps",
+      "order": 20
+    }
+  },
+  "contributes": {
+    "sessionControls": [
+      {
+        "id": "rsvp-read",
+        "entryPoint": "session-control.mjs",
+        "label": "Read as RSVP",
+        "icon": "Zap",
+        "statusPath": "session-status"
+      }
+    ],
+    "panelTabs": [
+      {
+        "id": "reader",
+        "title": "RSVP Reader",
+        "menuLabel": "RSVP Reader",
+        "menuDescription": "Opens the RSVP reader side by side with the chat",
+        "icon": "Search",
+        "entry": "panel.mjs"
+      }
+    ]
+  },
+  "backend": {
+    "entryPoint": "backend/server.py",
+    "type": "python",
+    "port": "auto",
+    "healthCheck": "/health",
+    "routes": "/apps/rsvp-reader/api"
+  },
+  "permissions": {
+    "api": [
+      "/apps/rsvp-reader/api"
+    ],
+    "storage": false,
+    "network": false,
+    "cron": false
+  },
+  "platform": {
+    "os": [
+      "linux",
+      "macos"
+    ],
+    "installMode": "server"
+  },
+  "minKiroCrewVersion": "0.1.2"
+}

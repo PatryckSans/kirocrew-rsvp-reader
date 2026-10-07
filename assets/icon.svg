@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none">
+  <!-- olho: contorno fino em cinza claro -->
+  <path d="M2.2 12c1.9-4.2 5.8-6.8 9.8-6.8s7.9 2.6 9.8 6.8c-1.9 4.2-5.8 6.8-9.8 6.8S4.1 16.2 2.2 12Z"
+        stroke="#c7c7cf" stroke-width="1.3" stroke-linejoin="round" />
+  <!-- iris: circulo fino, mesmo cinza, so para dar profundidade -->
+  <circle cx="12" cy="12" r="3.4" stroke="#c7c7cf" stroke-width="1.1" />
+  <!-- raio: excede a altura do olho (topo ~3.0 / base ~21.0), cor roxa de destaque -->
+  <path d="M14.4 3.0 8.2 13.6h3.6l-2.2 7.4 7.0-10.4h-3.8l1.6-7.6Z"
+        fill="#a78bfa" stroke="#a78bfa" stroke-width="0.4" stroke-linejoin="round" />
+</svg>
