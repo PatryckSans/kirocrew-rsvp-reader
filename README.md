@@ -13,6 +13,16 @@ is what the agent meant, and it keeps your place.
 
 ## Install
 
+**From the dashboard (no clone needed).** This repo is also a registry that lists the app:
+
+1. Open the **Apps** page and add a Registry:
+   - **Repo:** `https://github.com/PatryckSans/kirocrew-rsvp-reader`
+   - **Branch:** `main`
+2. Install **RSVP Reader** from the store.
+3. Click **Enable**.
+
+**From a terminal.**
+
 ```bash
 git clone https://github.com/PatryckSans/kirocrew-rsvp-reader.git
 kirocrew app install ./kirocrew-rsvp-reader
