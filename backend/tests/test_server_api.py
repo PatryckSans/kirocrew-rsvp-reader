@@ -13,13 +13,13 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 MSGS = [
-    {"role": "user", "content": "Faz o relatorio?"},
-    {"role": "assistant", "content": "Vou localizar os arquivos."},               # 1 narration
+    {"role": "user", "content": "Can you write the report?"},
+    {"role": "assistant", "content": "I will locate the files."},               # 1 narration
     {"role": "tool", "content": "🔧 ls"},                                         # 2
-    {"role": "assistant", "content": "Achei. Agora vou ler."},                    # 3 narration
-    {"role": "assistant", "content": "**Resumo:** feito.\n\n- um\n- dois"},       # 4 FINAL of turn 1
-    {"role": "user", "content": "Obrigado"},                                      # 5
-    {"role": "assistant", "content": "De nada. Veja `spawn_run`."},               # 6 FINAL of turn 2
+    {"role": "assistant", "content": "Found them. Now I will read."},                    # 3 narration
+    {"role": "assistant", "content": "**Summary:** done.\n\n- one\n- two"},       # 4 FINAL of turn 1
+    {"role": "user", "content": "Thanks"},                                      # 5
+    {"role": "assistant", "content": "You are welcome. See `spawn_run`."},               # 6 FINAL of turn 2
 ]
 
 
@@ -49,8 +49,8 @@ async def run() -> None:
             fin = {m["index"]: m["final"] for m in items}
             assert fin == {6: True, 5: True, 4: True, 3: False, 1: False, 0: True}, fin
             prev = {m["index"]: m["preview"] for m in items}
-            assert "**" not in prev[4] and prev[4].startswith("Resumo: feito."), prev[4]
-            assert prev[6] == "De nada. Veja spawn_run."
+            assert "**" not in prev[4] and prev[4].startswith("Summary: done."), prev[4]
+            assert prev[6] == "You are welcome. See spawn_run."
 
             # `final` does not depend on the roles filter
             r = await c.get("/api/sessions/dashboard_chat-1-1000/messages", params={"roles": "assistant"})
@@ -62,7 +62,7 @@ async def run() -> None:
             s1 = await r.json()
             r = await c.get("/api/sessions/dashboard_chat-1-1000/stamp")
             assert (await r.json()) == s1
-            _write(f, MSGS + [{"role": "assistant", "content": "nova resposta"}])
+            _write(f, MSGS + [{"role": "assistant", "content": "new reply"}])
             r = await c.get("/api/sessions/dashboard_chat-1-1000/stamp")
             s2 = await r.json()
             assert s2["size"] != s1["size"] and s2["mtimeNs"] != s1["mtimeNs"], (s1, s2)
@@ -91,7 +91,7 @@ async def run() -> None:
             assert (await r.json())["state"] == "none"
 
             # split + joinPrev reach the client
-            r = await c.post("/api/text/tokenize", json={"text": "usar getUserNameFromSessionStoreFactoryX agora", "clean": {"long_word_len": 12}})
+            r = await c.post("/api/text/tokenize", json={"text": "use getUserNameFromSessionStoreFactoryX now", "clean": {"long_word_len": 12}})
             toks = (await r.json())["tokens"]
             assert any(t["joinPrev"] for t in toks) and not toks[0]["joinPrev"], toks
             # invalid new settings degrade to defaults, never an error

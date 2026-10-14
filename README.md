@@ -80,7 +80,7 @@ ui/               plain ES modules, no build step
   rsvp-core.mjs   what is drawn
   index.mjs       full page    panel.mjs  side-panel tab    session-control.mjs  composer chip
 tests/ui-integration/   React 18 + jsdom against the real backend
-docs/             manual test plan (Portuguese)
+docs/             manual test plan
 ```
 
 ```bash

@@ -134,7 +134,7 @@ export function RsvpDisplay({ token, height, onResizeStart, hideHandle, display 
   )
 }
 
-// "3/8 · Para cada fonte de contato": where the focal word sits in a list (the
+// "3/8 · For each contact source": where the focal word sits in a list (the
 // number is always visible, the title is what gets ellipsised in a narrow panel).
 // Inline styles on purpose: this app cannot add Tailwind classes to the host CSS.
 function listChip(token) {
@@ -686,23 +686,23 @@ export function CleanModeToggle({ settings, onChange }) {
 // hash, URL, a word with a slash, table, diff, OPTIONS line...). Sent to the
 // REAL backend, so the preview is exactly what reading will look like.
 const PREVIEW_SAMPLE = [
-  '## Plano proposto',
-  'O **ponto principal**: editei `/home/user/project/app/ui/panel.mjs` no commit 4f9c2ab1e7, veja https://github.com/example/project e o `incidente/manutenção`.',
-  'Para cada item:',
-  '1. primeiro com a versão v0.7.1',
-  '2. segundo com `getUserNameFromSessionStoreFactoryXYZ`',
-  '- primeiro item da lista',
-  '| Categoria | Vira |',
+  '## Proposed plan',
+  'The **main point**: I edited `/home/user/project/app/ui/panel.mjs` in commit 4f9c2ab1e7, see https://github.com/example/project and the `incident/maintenance` page.',
+  'For each item:',
+  '1. first one with version v0.7.1',
+  '2. second one with `getUserNameFromSessionStoreFactoryXYZ`',
+  '- first item of the list',
+  '| Category | Becomes |',
   '|---|---|',
-  '| Ênfase | importante |',
-  '| Lista | item |',
+  '| Emphasis | important |',
+  '| List | item |',
   '```diff',
   '--- /dev/null',
   '+++ /home/user/project/app/ui/panel.mjs',
-  '+linha nova',
+  '+new line',
   '```',
-  'Chame `dataLayer.push({ event: "x" })` e pronto.',
-  '[OPTIONS: Faça A | Faça B]',
+  'Call `dataLayer.push({ event: "x" })` and you are done.',
+  '[OPTIONS: Do A | Do B]',
 ].join('\n')
 
 const ROWS = [
