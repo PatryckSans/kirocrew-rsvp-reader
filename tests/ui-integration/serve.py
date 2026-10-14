@@ -10,17 +10,17 @@ server.verify_proxy_request = lambda header, *, method, target, body: True
 d = Path(os.environ["SESS_DIR"])
 sessions_reader._SESSIONS_DIR_OVERRIDE = d
 
-LONG = " ".join(["palavra%d" % i for i in range(60)])
-FINAL = ("**Resumo:** feito agora.\n\nPara cada fonte de contato\n"
-         "1. Nome da fonte e sistema responsavel\n2. Como os dados sao disponibilizados\n"
-         "3. Documentacao tecnica de conexao\n\nUse getUserNameFromSessionStoreFactoryXYZ aqui. " + LONG + "\n\n[OPTIONS: Escolha A | Escolha B]")
+LONG = " ".join(["word%d" % i for i in range(60)])
+FINAL = ("**Summary:** done now.\n\nFor each contact source\n"
+         "1. Name of the source and responsible system\n2. How the data is made available\n"
+         "3. Technical connection documentation\n\nUse getUserNameFromSessionStoreFactoryXYZ here. " + LONG + "\n\n[OPTIONS: Choose A | Choose B]")
 MSGS = [
-    {"role": "user", "content": "Faz o relatorio?"},
-    {"role": "assistant", "content": "Vou localizar os arquivos."},
+    {"role": "user", "content": "Can you write the report?"},
+    {"role": "assistant", "content": "I will locate the files."},
     {"role": "tool", "content": "tool out"},
     {"role": "assistant", "content": FINAL},
-    {"role": "user", "content": "Obrigado"},
-    {"role": "assistant", "content": "De nada, ate logo."},
+    {"role": "user", "content": "Thanks"},
+    {"role": "assistant", "content": "You are welcome, see you later."},
 ]
 def write(name, msgs):
     lines = [json.dumps({"_type": "metadata", "title": name, "updated_at": "2026-10-07T10:00:00-03:00"})]

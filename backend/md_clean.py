@@ -11,7 +11,7 @@ one). Rules were designed against ~14k real messages, with these protections
 (each one exists because a plausible-looking rule would have damaged real text):
 
 * `snake_case`, `*.py`, `--include=*`, `2*3` are never treated as emphasis;
-* a word with one slash (`incidente/manutenção`, `e/ou`) or a date (`02/09`)
+* a word with one slash (`incident/maintenance`, `and/or`) or a date (`02/09`)
   is never treated as a path;
 * an HTML-looking word that is not in the small known list (`<head>`) is kept;
 * inline code that is a quoted phrase is read, not collapsed;
@@ -166,7 +166,7 @@ class Segment:
     list_item: int = 0  # 1-based number of the top-level item this token belongs to
     list_sub: int = 0  # 1-based number of the sub-item inside that item (0 = the item itself)
     list_size: int = 0  # how many top-level items the list has
-    list_title: str = ""  # the line that introduces the list ("Para cada fonte de contato")
+    list_title: str = ""  # the line that introduces the list ("For each contact source")
 
 
 _LABELS = {

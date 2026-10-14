@@ -13,4 +13,4 @@ bash run.sh          # starts the backend, runs `node --test ui.test.mjs`, stops
 ```
 
 jsdom has no layout engine, so nothing here proves how it *looks* — see
-`../../docs/manual-test-plan.pt-BR.md` for the manual checks.
+`../../docs/manual-test-plan.md` for the manual checks.

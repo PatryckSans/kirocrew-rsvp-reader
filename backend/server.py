@@ -324,7 +324,7 @@ def _preview(text: str, limit: int = 90) -> str:
 def final_assistant_indices(messages: list[dict]) -> set[int]:
     """Absolute indices of the assistant message that CLOSES each turn (the last
     assistant message before the next user message). The ones before it are
-    mostly narration between tool calls ("Vou localizar...")."""
+    mostly narration between tool calls ("I will locate the files...")."""
     finals: set[int] = set()
     seen_later = False
     for m in reversed(messages):

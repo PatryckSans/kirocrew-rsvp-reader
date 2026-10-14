@@ -14,6 +14,7 @@
 - New keyboard shortcuts (`[` `]`, `Alt` + arrows, `Home`, `Esc`, `?`), shortcut list, first-run tips.
 - "Quick read here" in the composer chip.
 - Internals: playback and loading moved into shared hooks; the Context box is memoized per line.
+- All code, comments, tests and documentation are in English (the marker-language option still offers Portuguese).
 
 ## 0.1.0
 
