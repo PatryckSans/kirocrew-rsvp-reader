@@ -1,6 +1,6 @@
 {
   "name": "rsvp-reader",
-  "version": "0.2.0",
+  "version": "0.1.0",
   "displayName": "RSVP Reader",
   "description": "Read an agent's replies at your own pace, one word at a time. RSVP Reader flashes each word at a fixed focal point, cleans the Markdown noise (tables, code, links, paths), and keeps your place, so a long answer becomes a steady stream you follow without scrolling.",
   "author": "Patryck Sans",
@@ -52,7 +52,7 @@
       {
         "id": "rsvp-read",
         "entryPoint": "session-control.mjs",
-        "label": "Read as RSVP",
+        "label": "RSVP",
         "icon": "Zap",
         "statusPath": "session-status"
       }

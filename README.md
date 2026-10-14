@@ -8,7 +8,7 @@ open it from the composer, from a side-panel tab bound to the current chat, or a
 full page. It cleans the Markdown noise (tables, code, links, paths) so what you read
 is what the agent meant, and it keeps your place.
 
-> Status: version 0.2.0. Developed and tested on Linux. macOS is declared in the
+> Status: version 0.1.0. Developed and tested on Linux. macOS is declared in the
 > manifest but not yet tested.
 
 ## Install
@@ -37,7 +37,7 @@ After an update, hard-refresh the dashboard (Ctrl+Shift+R) so the browser loads 
 
 | Where | How |
 |---|---|
-| Composer | The ⚡ chip: **Quick read here** plays the latest reply in the popover; **Open full page** opens the page for this chat. |
+| Composer | The ⚡ **RSVP** chip: **Quick read here** plays the latest reply in the popover; **Open full page** opens the page for this chat; **Open in side panel** shows where to find the tab. |
 | Side panel | Click `+` at the top of the right panel and choose **RSVP Reader**. It binds to the chat it was opened in; there is no session picker. |
 | Full page | **RSVP Reader** in the sidebar, with a session picker and a **Paste text** box. |
 

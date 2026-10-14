@@ -124,7 +124,7 @@ Not covered by any automated test: appearance (colors, spacing, text clipping), 
 ## 6. Composer chip and performance
 
 **F10. Reading inside the chip** (verify only in the real dashboard)
-- 10.1 Click the ⚡ in the composer. The button order is: **Open in side panel**, **Quick read here**, **Open full page**, **Close**.
+- 10.1 Click the ⚡ in the composer. The button order is: **Quick read here** (the highlighted primary button), **Open full page**, **Open in side panel**, **Close**.
 - 10.2 **Quick read here** opens a small box with the most recent reply, play/pause, speed and progress.
 - 10.3 With **Hide quick read** the box disappears. The popover must not be clipped or close by itself when you press play (if it closes, note it down: it is the open uncertainty of this feature).
 - 10.4 A speed change made here also applies in the panel and on the page, the next time they open (same storage).

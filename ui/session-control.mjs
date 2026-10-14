@@ -2,9 +2,12 @@
 // real session-control.mjs of the demo-app: { session, onClose }, default export
 // is required (the host mounts it with React.lazy). Served raw, no build step.
 //
-// Three ways to read from here:
-// - "Quick read here": the newest closing reply of THIS conversation plays right
-//   inside the popover (a small focal box + play/pause + speed). No navigation.
+// Three ways to read from here, in the order the popover lists them:
+// - "Quick read here" (the primary button): the newest closing reply of THIS
+//   conversation plays right inside the popover (a small focal box + play/pause
+//   + speed). No navigation.
+// - "Open full page": navigates to the standalone page with this session
+//   pre-selected via ?session=.
 // - "Open in side panel": there is NO programmatic way to open a
 //   contributes.panelTabs tab from outside the chat component that owns
 //   usePanelTabs/openPanelTab (confirmed by reading the dashboard bundle: no
@@ -13,8 +16,6 @@
 //   button cannot open the tab BY ITSELF -- it points the user at the panel's
 //   own '+' menu instead. Once opened from there, the panel tab auto-binds to
 //   this exact conversation (see panel.mjs / server.py's /api/panel-session).
-// - "Open full page": navigates to the standalone page with this session
-//   pre-selected via ?session=.
 
 const React = window.__kirocrew_modules.react
 const { useAppApi, useNavigate } = window.__kirocrew_modules['@kirocrew/app-sdk']
@@ -117,9 +118,22 @@ export default function RsvpChip({ session, onClose }) {
       status === null ? 'Checking this conversation…' : status.tooltip,
     ),
     h('button', {
+      onClick: () => setQuickRead((v) => !v),
+      disabled,
+      'aria-expanded': quickRead,
+      className: 'rsvp-focusable w-full text-[12px] py-1.5 px-3 rounded-md bg-accent text-white disabled:opacity-40',
+    }, quickRead ? 'Hide quick read' : 'Quick read here'),
+    quickRead && !disabled && session && session.sessionKey &&
+      h(MiniReader, { api, sessionKey: session.sessionKey }),
+    h('button', {
+      onClick: openFullPage,
+      disabled,
+      className: 'rsvp-focusable w-full mt-1.5 text-[12px] py-1.5 px-3 rounded-md border border-border bg-bg-elevated text-text disabled:opacity-40',
+    }, 'Open full page'),
+    h('button', {
       onClick: () => setShowPanelHint((v) => !v),
       disabled,
-      className: 'rsvp-focusable w-full text-[12px] py-1.5 px-3 rounded-md bg-accent text-white disabled:opacity-40',
+      className: 'rsvp-focusable w-full mt-1.5 text-[12px] py-1.5 px-3 rounded-md border border-border bg-bg-elevated text-text disabled:opacity-40',
     }, 'Open in side panel'),
     showPanelHint && h('div', {
       className: 'mt-1.5 mb-1 text-[11px] text-muted bg-bg-elevated border border-border rounded-md p-2 leading-snug',
@@ -130,19 +144,6 @@ export default function RsvpChip({ session, onClose }) {
       h('strong', { className: 'text-text-strong' }, 'RSVP Reader'),
       ' — it opens already bound to this conversation, no setup needed.',
     ),
-    h('button', {
-      onClick: () => setQuickRead((v) => !v),
-      disabled,
-      'aria-expanded': quickRead,
-      className: 'rsvp-focusable w-full mt-1.5 text-[12px] py-1.5 px-3 rounded-md border border-border bg-bg-elevated text-text disabled:opacity-40',
-    }, quickRead ? 'Hide quick read' : 'Quick read here'),
-    quickRead && !disabled && session && session.sessionKey &&
-      h(MiniReader, { api, sessionKey: session.sessionKey }),
-    h('button', {
-      onClick: openFullPage,
-      disabled,
-      className: 'rsvp-focusable w-full mt-1.5 text-[12px] py-1.5 px-3 rounded-md border border-border bg-bg-elevated text-text disabled:opacity-40',
-    }, 'Open full page'),
     h('button', {
       onClick: () => onClose && onClose(),
       className: 'rsvp-focusable w-full mt-1.5 text-[11px] text-muted px-2 py-1 rounded border border-border bg-transparent',
