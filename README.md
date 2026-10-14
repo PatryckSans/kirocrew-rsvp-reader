@@ -11,6 +11,14 @@ is what the agent meant, and it keeps your place.
 > Status: version 0.1.0. Developed and tested on Linux. macOS is declared in the
 > manifest but not yet tested.
 
+## Screenshots
+
+![Full page: word-by-word reader, list position chip and the Context box](assets/screenshots/full-page.png)
+
+![Side panel beside the chat](assets/screenshots/side-panel.png)
+
+![Composer chip with Quick read](assets/screenshots/composer-chip.png)
+
 ## Install
 
 **From the dashboard (no clone needed).** This repo is also a registry that lists the app:

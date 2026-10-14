@@ -6,6 +6,11 @@
   "author": "Patryck Sans",
   "license": "Apache-2.0",
   "iconPath": "assets/icon.svg",
+  "screenshots": [
+    "assets/screenshots/full-page.png",
+    "assets/screenshots/side-panel.png",
+    "assets/screenshots/composer-chip.png"
+  ],
   "tags": [
     "reading",
     "rsvp",
